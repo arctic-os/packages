@@ -1,0 +1,36 @@
+
+
+pkgname=arctic-openbox
+pkgver=1.0
+pkgrel=1
+pkgdesc="ArcticOS Openbox Floating WM Configurations"
+url="https://github.com"
+arch=('any')
+license=('GPL3')
+makedepends=()
+conflicts=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+
+prepare() {
+    cp -af ../files/. ${srcdir}
+}
+
+package() {
+    local _obdir=${pkgdir}/etc/skel/.config/openbox
+    local _configdir=${pkgdir}/etc/skel/.config
+
+    mkdir -p "$_obdir" && mkdir -p "$_configdir"
+
+    # Copy other stuff
+    cp -r ${srcdir}/alacritty               "$_configdir"
+    cp -r ${srcdir}/dunst                   "$_configdir"
+    cp -r ${srcdir}/nitrogen                "$_configdir"
+    cp -r ${srcdir}/obmenu-generator        "$_configdir"
+    install -Dm 644 picom.conf              "$_configdir"/picom.conf
+
+    # Copy Openbox configs
+    cp -r ${srcdir}/polybar                 "$_obdir"
+    install -Dm 744 autostart               "$_obdir"/autostart
+    install -Dm 644 rc.xml                  "$_obdir"/rc.xml
+}

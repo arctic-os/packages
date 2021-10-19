@@ -1,0 +1,24 @@
+# Maintainer: Anil Beesetti <@anilbeesetti>
+
+pkgname=arctic-install-scripts
+pkgver=1.0
+pkgrel=1
+pkgdesc='Arctic Install Scripts'
+url="https://github.com/arctic-os/packages"
+arch=('any')
+license=('GPL3')
+
+source=(
+		'chroot_post_install.sh'
+		'post_install.sh'
+)
+
+sha512sums=('4adf209c32adddcb38b08eefb82cc375e63f3d866be9d4e780ca4b91e92c234a0e87920964ea794bf369abf5f345d0122a4bd74b3f9079924b66ddae854a1fa9'
+            'cfbb5dae45aed602eb3e907cc28a88f7c4f91c8f539e8f82e8f2f483aef57c5874c53abe3444db160654f7d3b9dd2859698bde90ab1b93ceca9f7232f4498f9b')
+
+package() {
+	local bin=${pkgdir}/usr/bin
+	
+	install -Dm755 chroot_post_install.sh 	${bin}/chroot_post_install.sh
+	install -Dm755 post_install.sh 				${bin}/post_install.sh
+}
