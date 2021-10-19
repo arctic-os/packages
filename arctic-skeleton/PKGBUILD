@@ -1,0 +1,33 @@
+
+pkgname=arctic-skeleton
+pkgver=1.0
+pkgrel=1
+pkgdesc="Base Configurations for ArcticOS"
+url="https://github.com/arctic-os/arctic-skeleton"
+arch=('any')
+license=('GPL3')
+makedepends=()
+depends=()
+conflicts=()
+provides=("${pkgname}")
+options=(!strip)
+
+prepare() {
+	cp -af ../files/. ${srcdir}
+}
+
+package() {
+	local _skeldir=${pkgdir}/etc/skel
+	local _cachedir=${_skeldir}/.cache
+	local _configdir=${_skeldir}/.config
+
+	mkdir -p "$_skeldir" && mkdir -p "$_cachedir" && mkdir -p "$_configdir"
+
+	# Copy config files
+	cp -r ${srcdir}/htop                "$_configdir"
+    cp -r ${srcdir}/geany 				"$_configdir"
+	cp -r ${srcdir}/gtk-3.0 			"$_configdir"
+
+	install -Dm 644 .gtkrc-2.0			"$_skeldir"/.gtkrc-2.0
+}
+

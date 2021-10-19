@@ -1,0 +1,25 @@
+
+pkgname=arctic-backgrounds
+pkgver=1.0
+pkgrel=1
+pkgdesc="Default wallpapers for ArcticOS"
+url="https://github.com/arctic-os/arctic-wallpapers"
+arch=('any')
+license=('GPL3')
+makedepends=()
+depends=()
+conflicts=()
+groups=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+
+prepare() {
+	cp -af ../files/. ${srcdir}
+}
+
+package() {
+	local _bgdir=${pkgdir}/usr/share/backgrounds
+	mkdir -p "$_bgdir"
+	cp -r ${srcdir}/* "$_bgdir"
+}
+
