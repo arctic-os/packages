@@ -2,7 +2,7 @@
 
 pkgname=arctic-openbox
 pkgver=1.0
-pkgrel=1
+pkgrel=02
 pkgdesc="ArcticOS Openbox Floating WM Configurations"
 url="https://github.com/arctic-os"
 arch=('any')
