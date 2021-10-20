@@ -4,17 +4,15 @@ pkgname=arctic-openbox
 pkgver=1.0
 pkgrel=1
 pkgdesc="ArcticOS Openbox Floating WM Configurations"
-url="https://github.com"
+url="https://github.com/arctic-os"
 arch=('any')
 license=('GPL3')
 makedepends=()
 conflicts=()
 provides=("${pkgname}")
 options=(!strip !emptydirs)
-
-prepare() {
-    cp -af ../files/. ${srcdir}
-}
+source=(${pkgname}::"git+${url}/${pkgname}.git")
+sha256sums=('SKIP')
 
 package() {
     local _obdir=${pkgdir}/etc/skel/.config/openbox
@@ -23,14 +21,14 @@ package() {
     mkdir -p "$_obdir" && mkdir -p "$_configdir"
 
     # Copy other stuff
-    cp -r ${srcdir}/alacritty               "$_configdir"
-    cp -r ${srcdir}/dunst                   "$_configdir"
-    cp -r ${srcdir}/nitrogen                "$_configdir"
-    cp -r ${srcdir}/obmenu-generator        "$_configdir"
-    install -Dm 644 picom.conf              "$_configdir"/picom.conf
+    cp -r ${srcdir}/${pkgname}/alacritty               "$_configdir"
+    cp -r ${srcdir}/${pkgname}/dunst                   "$_configdir"
+    cp -r ${srcdir}/${pkgname}/nitrogen                "$_configdir"
+    cp -r ${srcdir}/${pkgname}/obmenu-generator        "$_configdir"
+    install -Dm 644 ${srcdir}/${pkgname}/picom.conf    "$_configdir"/picom.conf
 
     # Copy Openbox configs
-    cp -r ${srcdir}/polybar                 "$_obdir"
-    install -Dm 744 autostart               "$_obdir"/autostart
-    install -Dm 644 rc.xml                  "$_obdir"/rc.xml
+    cp -r ${srcdir}/${pkgname}/polybar                 "$_obdir"
+    install -Dm 744 ${srcdir}/${pkgname}/autostart     "$_obdir"/autostart
+    install -Dm 644 ${srcdir}/${pkgname}/rc.xml        "$_obdir"/rc.xml
 }
