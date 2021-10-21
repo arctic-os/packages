@@ -2,7 +2,7 @@
 
 pkgname=arctic-openbox
 pkgver=1.0
-pkgrel=02
+pkgrel=03
 pkgdesc="ArcticOS Openbox Floating WM Configurations"
 url="https://github.com/arctic-os"
 arch=('any')
@@ -15,20 +15,26 @@ source=(${pkgname}::"git+${url}/${pkgname}.git")
 sha256sums=('SKIP')
 
 package() {
+    local _sharedir=${pkgdir}/usr/share/arctic/openbox
     local _obdir=${pkgdir}/etc/skel/.config/openbox
     local _configdir=${pkgdir}/etc/skel/.config
 
-    mkdir -p "$_obdir" && mkdir -p "$_configdir"
+    mkdir -p "$_obdir" && mkdir -p "$_configdir" && mkdir -p "$_sharedir"
+
+    # Copy shared files
+    cp -r ${srcdir}/${pkgname}/icons                   "$_sharedir"
 
     # Copy other stuff
     cp -r ${srcdir}/${pkgname}/alacritty               "$_configdir"
     cp -r ${srcdir}/${pkgname}/dunst                   "$_configdir"
     cp -r ${srcdir}/${pkgname}/nitrogen                "$_configdir"
     cp -r ${srcdir}/${pkgname}/obmenu-generator        "$_configdir"
+    cp -r ${srcdir}/${pkgname}/xfce4                   "$_configdir"
     install -Dm 644 ${srcdir}/${pkgname}/picom.conf    "$_configdir"/picom.conf
 
     # Copy Openbox configs
-    cp -r ${srcdir}/${pkgname}/polybar                 "$_obdir"
-    install -Dm 744 ${srcdir}/${pkgname}/autostart     "$_obdir"/autostart
-    install -Dm 644 ${srcdir}/${pkgname}/rc.xml        "$_obdir"/rc.xml
+    cp -r ${srcdir}/${pkgname}/polybar                  "$_obdir"
+    install -Dm 755 ${srcdir}/${pkgname}/autostart      "$_obdir"/autostart
+    install -Dm 644 ${srcdir}/${pkgname}/rc.xml         "$_obdir"/rc.xml
+    install -Dm 644 ${srcdir}/${pkgname}/menu-icons.xml "$_obdir"/menu-icons.xml
 }
