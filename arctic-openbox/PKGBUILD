@@ -2,7 +2,7 @@
 
 pkgname=arctic-openbox
 pkgver=1.0
-pkgrel=05
+pkgrel=06
 pkgdesc="ArcticOS Openbox Floating WM Configurations"
 url="https://github.com/arctic-os"
 arch=('any')
@@ -30,6 +30,7 @@ package() {
     cp -r ${srcdir}/${pkgname}/nitrogen                "$_configdir"
     cp -r ${srcdir}/${pkgname}/obmenu-generator        "$_configdir"
     cp -r ${srcdir}/${pkgname}/xfce4                   "$_configdir"
+    cp -r ${srcdir}/${pkgname}/plank                   "$_configdir"
     install -Dm 644 ${srcdir}/${pkgname}/picom.conf    "$_configdir"/picom.conf
 
     # Copy Openbox configs
