@@ -1,0 +1,22 @@
+pkgname=arctic-fonts
+pkgver=1.0
+pkgrel=1
+_pkgdest="/usr/share/fonts/arctic/"
+pkgdesc="Fonts for ArcticOS"
+url="https://github.com/arctic-os"
+arch=('any')
+license=('GPL3')
+makedepends=()
+depends=()
+conflicts=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+
+prepare() {
+	cp -af ../files/. ${srcdir}
+}
+
+package() {
+    mkdir -p "$pkgdir$_pkgdest"
+    cp -r ${srcdir}/*         "$pkgdir$_pkgdest"
+}
