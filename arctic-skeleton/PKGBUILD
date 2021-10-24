@@ -29,5 +29,7 @@ package() {
 	cp -r ${srcdir}/gtk-3.0 			"$_configdir"
 
 	install -Dm 644 .gtkrc-2.0			"$_skeldir"/.gtkrc-2.0
+
+    cp -r ${srcdir}/.mpd                "$_skeldir"
 }
 
