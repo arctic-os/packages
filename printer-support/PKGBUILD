@@ -1,8 +1,8 @@
 # Maintainer: Anil Beesetti <anilbeesetti10@gmail.com>
 
 pkgname=printer-support
-pkgver=1
-pkgrel=5
+pkgver=21.11
+pkgrel=01
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Category:Printers"
 license=('GPL')

@@ -2,8 +2,8 @@
 
 pkgname=alsa-support
 pkgdesc="Metapkg containing all needed packages to use ALSA"
-pkgver=1
-pkgrel=1
+pkgver=21.11
+pkgrel=01
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture"
 license=('GPL')
