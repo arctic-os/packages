@@ -1,8 +1,8 @@
 
 
 pkgname=arctic-openbox
-pkgver=1.0
-pkgrel=08
+pkgver=21.11
+pkgrel=01
 pkgdesc="ArcticOS Openbox Floating WM Configurations"
 url="https://github.com/arctic-os"
 arch=('any')
@@ -32,10 +32,15 @@ package() {
     cp -r ${srcdir}/${pkgname}/xfce4                   "$_configdir"
     cp -r ${srcdir}/${pkgname}/plank                   "$_configdir"
     cp -r ${srcdir}/${pkgname}/dconf                   "$_configdir"
+    cp -r ${srcdir}/${pkgname}/scripts                 "$_configdir"
     install -Dm 644 ${srcdir}/${pkgname}/picom.conf    "$_configdir"/picom.conf
+    chmod +x "$_configdir"/scripts/*
+
 
     # Copy Openbox configs
     cp -r ${srcdir}/${pkgname}/polybar                  "$_obdir"
+    cp -r ${srcdir}/${pkgname}/rofi                     "$_obdir"
+    chmod +x "$_obdir"/rofi/bin/*
     install -Dm 755 ${srcdir}/${pkgname}/autostart      "$_obdir"/autostart
     install -Dm 644 ${srcdir}/${pkgname}/rc.xml         "$_obdir"/rc.xml
     install -Dm 644 ${srcdir}/${pkgname}/menu-icons.xml "$_obdir"/menu-icons.xml
