@@ -1,0 +1,20 @@
+# Maintainer: Anil Beesetti <anilbeesetti10@gmail.com>
+
+pkgname=timeshift-support
+pkgver=21.11
+pkgrel=01
+pkgdesc='Support package for enabling Timeshift with timeshift-autosnap and grub-btrfs support'
+arch=(any)
+url='https://wiki.archlinux.org/title/Synchronization_and_backup_programs'
+license=(GPL3)
+depends=(timeshift timeshift-autosnap grub-btrfs)
+conflicts=(snapper-support snapper snap-pac)
+options=(!strip !emptydirs)
+install=$pkgname.install
+
+prepare() {
+    cp -arf ../usr ${srcdir}
+}
+package() {
+    cp -a ${srcdir}/usr ${pkgdir}
+}
