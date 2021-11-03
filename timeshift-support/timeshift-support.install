@@ -8,12 +8,8 @@ post_install() {
     # Set timeshift to btrfs mode
     sed -i 's|"btrfs_mode" : "false",|"btrfs_mode" : "true",|g' /etc/timeshift/default.json
 
-    if [[ $(/usr/bin/systemctl is-enabled grub-btrfs.path) == "enabled" ]]; then 
-        /usr/bin/systemctl disable --now grub-btrfs.path; 
-    fi
-
     echo "Enabling automatic rebuild of grub-btrfs when snapshots are taken..."
     /usr/bin/systemctl daemon-reload
-    /usr/bin/systemctl enable --now grub-btrfs-timeshift.path
+    /usr/bin/systemctl enable --now grub-btrfs.path
 }
 
