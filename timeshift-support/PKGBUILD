@@ -10,11 +10,22 @@ license=(GPL3)
 depends=(timeshift timeshift-autosnap grub-btrfs)
 conflicts=(snapper-support snapper snap-pac)
 options=(!strip !emptydirs)
+source=(grub-btrfs-timeshift.path
+        grub-btrfs-timeshift.service
+        timeshift-autosnap-fix.hook)
+md5sums=('7286bdb93a115565ebdcd02c74392a46'
+         'fd20919f1b71d6106a514e0f253f3bf5'
+         '75e0d27568508da2745fd0bedd72b3bf')
+
 install=$pkgname.install
 
-prepare() {
-    cp -arf ../usr ${srcdir}
-}
 package() {
-    cp -a ${srcdir}/usr ${pkgdir}
+    cd $srcdir
+
+    install -Dm644 grub-btrfs-timeshift.path $pkgdir/usr/lib/systemd/system/grub-btrfs-timeshift.path
+    install -Dm644 grub-btrfs-timeshift.service $pkgdir/usr/lib/systemd/system/grub-btrfs-timeshift.service
+    install -Dm644 timeshift-autosnap-fix.hook $pkgdir/usr/share/libalpm/hooks/timeshift-autosnap-fix.hook
 }
+
+
+

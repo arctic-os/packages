@@ -25,3 +25,9 @@ optdepends=('pavucontrol: A GTK volume control tool for PulseAudio'
 conflicts=("pipewire-support")
 replaces=("garuda-pulse" "manjaro-pulse")
 
+
+
+
+
+
+

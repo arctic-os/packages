@@ -2,7 +2,7 @@
 
 pkgname=networkmanager-support
 pkgver=21.11
-pkgrel=01
+pkgrel=02
 arch=('any')
 url="https://wiki.archlinux.org/index.php/NetworkManager"
 license=('GPL')
@@ -26,5 +26,14 @@ optdepends=('network-manager-applet: Applet for managing network connections'
             'qomui: OpenVPN/WireGuard QT Gui with advanced features and support for multiple providers')
 conflicts=("connman-support")
 install=$pkgname.install
+
+
+
+
+
+
+
+
+
 
 

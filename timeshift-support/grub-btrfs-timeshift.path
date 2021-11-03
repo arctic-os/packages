@@ -6,3 +6,4 @@ PathModified=/run/timeshift/backup/timeshift-btrfs/snapshots
 
 [Install]
 WantedBy=multi-user.target
+

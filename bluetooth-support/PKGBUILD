@@ -19,3 +19,16 @@ optdepends=('blueman: A GTK bluetooth manager'
             'blueberry: Bluetooth configuration tool')
 install=$pkgname.install
 
+
+
+
+
+
+
+
+
+
+
+
+
+

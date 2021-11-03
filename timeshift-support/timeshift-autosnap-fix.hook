@@ -9,3 +9,4 @@ Target = timeshift-support
 Description = Ensuring timeshift-autosnap has correct settings...
 When = PostTransaction
 Exec = /bin/sh -c "sed -i 's/updateGrub=true/updateGrub=false/g' /etc/timeshift-autosnap.conf"
+

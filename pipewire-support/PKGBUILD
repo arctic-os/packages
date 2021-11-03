@@ -24,3 +24,11 @@ conflicts=("pulseaudio-equalizer"
         "pulseaudio-zeroconf")
 install=$pkgname.install
 
+
+
+
+
+
+
+
+
