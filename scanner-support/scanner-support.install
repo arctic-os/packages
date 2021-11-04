@@ -28,8 +28,8 @@ post_install() {
 }
 
 post_upgrade() {
-    systemctl is-active saned.socket >/dev/null || systemctl enable saned.socket
-    systemctl is-active ipp-usb.service >/dev/null || systemctl enable ipp-usb.service
+    systemctl enable --now saned.socket
+    systemctl enable --now ipp-usb.service
     add_group
 }
 
